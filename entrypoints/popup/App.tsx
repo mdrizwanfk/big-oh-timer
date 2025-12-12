@@ -25,10 +25,7 @@ function App() {
     loadStopwatches()
 
     // Listen for storage changes
-    const handleStorageChange = (
-      _: Record<string, any>,
-      areaName: string,
-    ) => {
+    const handleStorageChange = (_: Record<string, any>, areaName: string) => {
       if (areaName === 'local') {
         loadStopwatches()
       }
@@ -64,7 +61,10 @@ function App() {
       for (const [key, value] of Object.entries(allStorage)) {
         if (key.startsWith('stopwatch_')) {
           try {
-            const url = key.replace('stopwatch_', '')
+            const baseURL = 'https://cs50.harvard.edu/x/psets/'
+            const pathSlug = key.replace('stopwatch_', '')
+            const pathName = pathSlug.split('-').join('/')
+            const url = baseURL + pathName + '/'
 
             if (value && typeof value === 'object' && 'hours' in value) {
               allStopwatches.push({
