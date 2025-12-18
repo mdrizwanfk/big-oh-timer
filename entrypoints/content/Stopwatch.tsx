@@ -375,7 +375,7 @@ const Stopwatch = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed z- pointer-events-auto cursor-move select-none"
+      className="fixed z-50 pointer-events-auto cursor-move select-none"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -384,10 +384,10 @@ const Stopwatch = () => {
     >
       <div
         onMouseDown={handleMouseDown}
-        className="bg-white rounded-xl shadow-2xl p-3 min-w-[140px] cursor-grab active:cursor-grabbing"
+        className="bg-white rounded-xl shadow-2xl p-3 min-w-[180px] cursor-grab active:cursor-grabbing"
       >
         {/* Time Display */}
-        <div className="text-2xl font-mono font-bold text-gray-900 text-center mb-1 tracking-wider">
+        <div className="text-2xl font-mono font-bold text-gray-900 text-center mb-1 tracking-wider whitespace-nowrap">
           {formatTime(hours)} : {formatTime(minutes)} : {formatTime(seconds)}
         </div>
         {/* Completed Status */}
